@@ -41,14 +41,14 @@ class FileSystemImpl implements FileSystem {
 	
 	public function getDefaultDIContainer($configRelPath = 'config.php') {
 		$rval = new ContainerBuilder;
-		foreach ($this->listFilePaths($configRelPath) as $absConfigPath) {
-			$rval->addDefinitions($absConfigPath);
-		}
+		$this->configureDIContainer($rval);
 		return $rval;
 	}
 	
-	public function configureDIContainer(ContainerBuilder $containerBuilder) {
-		
+	public function configureDIContainer(ContainerBuilder $containerBuilder, $configRelPath = 'config.php') {
+		foreach ($this->listFilePaths($configRelPath) as $absConfigPath) {
+			$containerBuilder->addDefinitions($absConfigPath);
+		}
 	}
 	
 	public function getRootPaths() {

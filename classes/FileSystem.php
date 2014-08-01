@@ -12,8 +12,8 @@ interface FileSystem {
 	/**
 	 * @return \DI\ContainerBuilder
 	 */
-	public function getDefaultDIContainer();
+	public function getDefaultDIContainer($configRelPath = 'config.php');
 	
-	public function configureDIContainer(ContainerBuilder $containerBuilder);
+	public function configureDIContainer(ContainerBuilder $containerBuilder, $configRelPath = 'config.php');
 	
 }
